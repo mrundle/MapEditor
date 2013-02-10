@@ -14,7 +14,7 @@ void MapEditor::OnCleanup() {
 
 	Entity::EntityList.clear();
 
-	MapEditor::AreaControl.OnCleanup();
+	Area::AreaControl.OnCleanup();
 
 	Mix_FreeMusic(mus);
 	Mix_FreeChunk(sfx1);

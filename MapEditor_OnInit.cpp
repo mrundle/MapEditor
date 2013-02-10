@@ -43,7 +43,7 @@ bool MapEditor::OnInit() {
 //==========================================================================
 // Load map tileset and camera
 
-if(MapEditor::AreaControl.OnLoad("./maps/1.area") == false) {
+if(Area::AreaControl.OnLoad("./maps/1.area") == false) {
 	std::cout << "maps";
 	return false;
 }

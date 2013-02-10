@@ -33,7 +33,7 @@ bool Area::OnLoad(char* File) {
  
             fscanf(FileHandle, "%s ", MapFile);
  
-            CMap tempMap;
+            Map tempMap;
             if(tempMap.OnLoad(MapFile) == false) {
                 fclose(FileHandle);
  
