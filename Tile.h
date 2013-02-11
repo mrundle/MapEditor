@@ -16,7 +16,8 @@ class Tile {
 
 	public:
 
-		int TileID;
+		int TileXID;
+		int TileYID;
 		int TypeID;
 
 	public:

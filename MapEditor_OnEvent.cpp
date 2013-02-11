@@ -66,8 +66,9 @@ void MapEditor::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 		}
 
     case SDLK_ESCAPE: {
-      OnExit();
-      break;
+   		std::cout << Camera::CameraControl.GetX() << "," << Camera::CameraControl.GetY() << std::endl;   
+		//OnExit();
+   		break;
     }
 
 		default: {

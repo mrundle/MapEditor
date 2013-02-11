@@ -17,6 +17,7 @@ bool Area::OnLoad(char* File) {
  
     char TilesetFile[255];
  
+	// Load in the tileset file path
     fscanf(FileHandle, "%s\n", TilesetFile);
  
     if((Surf_Tileset = Surface::OnLoad(TilesetFile)) == false) {
@@ -25,6 +26,7 @@ bool Area::OnLoad(char* File) {
         return false;
     }
  
+	// Load in the area size (will be squared in text file)
     fscanf(FileHandle, "%d\n", &AreaSize);
  
     for(int X = 0;X < AreaSize;X++) {

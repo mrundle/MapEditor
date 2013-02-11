@@ -24,7 +24,6 @@ MapEditor::MapEditor() {
 int MapEditor::OnExecute() {
 	// Initialize the game; if it fails, return error code and close program
 	if(OnInit() == false){
-		std::cout << "here";
 		return -1;
 	}
 

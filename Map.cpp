@@ -16,12 +16,24 @@ bool Map::OnLoad(char* File) {
 	for(int Y=0;Y<MAP_HEIGHT;Y++) {
 		for(int X=0;X<MAP_WIDTH;X++) {
 			Tile tempTile;
-
-			fscanf(FileHandle, "%d:%d ", &tempTile.TileID, &tempTile.TypeID);
+			
+			// Reads in pre-created map
+			//fscanf(FileHandle, "%d:%d:%d ", &tempTile.TileXID, &tempTile.TileYID, &tempTile.TypeID);
+			
+			// Creates generic "all-grass" map lined by black
+			if(Y==0 || Y==MAP_HEIGHT-1 || X==0 || X==MAP_WIDTH-1){
+				tempTile.TileXID=0;
+				tempTile.TileYID=0;
+				tempTile.TypeID=TILE_TYPE_BLOCK;
+			}else{
+				tempTile.TileXID=0;
+				tempTile.TileYID=1;
+				tempTile.TypeID=TILE_TYPE_NORMAL;
+			}
 
 			TileList.push_back(tempTile);
 		}
-		fscanf(FileHandle, "\n");
+		//fscanf(FileHandle, "\n");
 	}
 
 	fclose(FileHandle);
@@ -47,8 +59,10 @@ void Map::OnRender(SDL_Surface* Surf_Display, int MapX, int MapY) {
 			int tX = MapX + (X * TILE_SIZE);
 			int tY = MapY + (Y * TILE_SIZE);
 
-			int TilesetX = (TileList[ID].TileID % TilesetWidth) * TILE_SIZE;
-			int TilesetY = (TileList[ID].TileID / TilesetWidth) * TILE_SIZE;
+			//int TilesetX = (TileList[ID].TileID % TilesetWidth) * TILE_SIZE;
+			//int TilesetY = (TileList[ID].TileID / TilesetWidth) * TILE_SIZE;
+			int TilesetX = (TileList[ID].TileXID) * TILE_SIZE;
+			int TilesetY = (TileList[ID].TileYID) * TILE_SIZE;
 
 			Surface::OnDraw(Surf_Display, Surf_Tileset, tX, tY, TilesetX, TilesetY, TILE_SIZE, TILE_SIZE);
 
