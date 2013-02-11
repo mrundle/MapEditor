@@ -7,9 +7,7 @@
 #include "Define.h"
 #include "Event.h"
 #include "Surface.h"
-#include "Animation.h"
-#include "Entity.h"
-#include "Area.h"
+#include "Map.h"
 #include "Camera.h"
 #include <iostream>
  
@@ -19,35 +17,11 @@ class MapEditor : public Event {
 
 	// SDL surfaces
 	SDL_Surface* Surf_Display;
-	SDL_Surface* Surf_Char;
-	SDL_Surface* Surf_BG;
 
-	Mix_Music *mus;
-	Mix_Chunk *sfx1;
-	Mix_Chunk *sfx2;
-	Mix_Chunk *sfx3;
-	Mix_Chunk *sfx4;
-
-	Animation Anim_Char;
-
-	Entity Entity1;
-	Entity Entity2;
+	// game map
+	Map gameMap;
 
     private:
-	// Keeps track of the characters x and y positions
-	int x_pos;
-	int y_pos;
-	int goUp,goDown,goRight,goLeft;
-
-	// Keeps track of which way the character is facing
-	// accomplished by providing the x and y coordinate of upper left hand corner of 
-	// sprites location on the sheet
-	int charDirX, charDirY;
-	//is there movement? (cues animation)
-	bool isMoving;
-
-	// Keeps track of whether the character is moving up or down
-	int CurrentPlayer;
 
     public:
         MapEditor();
