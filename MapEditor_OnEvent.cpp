@@ -8,10 +8,8 @@ void MapEditor::OnEvent(SDL_Event* Event) {
 }
 
 //==============================================================================
-void MapEditor::OnLButtonDown(int mX, int mY) {
+void MapEditor::OnLButtonDown(int MouseXPos, int MouseYPos) {
 	// On left mouse button click
-	int MouseXPos = mX;
-	int MouseYPos = mY;
 
 	if(MouseXPos < (WWIDTH - CBAR_WIDTH)){
 		int CameraXPos = Camera::CameraControl.GetX();
@@ -27,10 +25,25 @@ void MapEditor::OnLButtonDown(int mX, int mY) {
 		int MapYTile = (MapYPos - MapYRemainder) / TILE_SIZE;
 
 		int TileNumber = (MapYTile * MAP_WIDTH) + MapXTile;
-		gameMap.TileList[TileNumber].TileXID=3;
-		gameMap.TileList[TileNumber].TileYID=3;
-		gameMap.TileList[TileNumber].TypeID=TILE_TYPE_BLOCK;
+		gameMap.TileList[TileNumber].TileXID = currentTileXID;
+		gameMap.TileList[TileNumber].TileYID = currentTileYID;
+		gameMap.TileList[TileNumber].TypeID = TILE_TYPE_NORMAL;
 	}
+
+// TYPE SELECTION
+/*
+	if(MouseXPos > (WWIDTH - CBAR_WIDTH)){
+		
+		// First row - should probably get rid of magic numbers
+		if( (MouseXPos > 718) && (MouseXPos < 750) ){
+			
+
+		{
+
+
+
+	}
+*/
 }
 
 //==============================================================================

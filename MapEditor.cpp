@@ -7,6 +7,9 @@ MapEditor::MapEditor() {
 	Control_Bar_One = NULL;
 	Control_Bar_Two = NULL;
 
+	currentTileXID=3;
+	currentTileYID=6;
+
 	Running = true;
 }
  

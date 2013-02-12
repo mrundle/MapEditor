@@ -24,6 +24,10 @@ class MapEditor : public Event {
 	// game map
 	Map gameMap;
 
+	// current tile choice
+	int currentTileXID;
+	int currentTileYID;
+
     private:
 
     public:
