@@ -1,4 +1,6 @@
 #include "MapEditor.h"
+#include <iostream>
+using namespace std;
  
 //==============================================================================
 void MapEditor::OnEvent(SDL_Event* Event) {
@@ -7,18 +9,28 @@ void MapEditor::OnEvent(SDL_Event* Event) {
 
 //==============================================================================
 void MapEditor::OnLButtonDown(int mX, int mY) {
-/*    // move the character
-	//if(x_pos>500) CurrentPlayer*=-1;
-	//if(x_pos<5) CurrentPlayer*=-1;
-	if(CurrentPlayer==1){
-		x_pos+=20;
-		y_pos+=20;
+	// On left mouse button click
+	int MouseXPos = mX;
+	int MouseYPos = mY;
+
+	if(MouseXPos < (WWIDTH - CBAR_WIDTH)){
+		int CameraXPos = Camera::CameraControl.GetX();
+		int CameraYPos = Camera::CameraControl.GetY();
+
+		int MapXPos = -1 * (CameraXPos - MouseXPos);
+		int MapYPos = -1 * (CameraYPos - MouseYPos);
+
+		int MapXRemainder = MapXPos % TILE_SIZE;
+		int MapYRemainder = MapYPos % TILE_SIZE;
+
+		int MapXTile = (MapXPos - MapXRemainder) / TILE_SIZE;
+		int MapYTile = (MapYPos - MapYRemainder) / TILE_SIZE;
+
+		int TileNumber = (MapYTile * MAP_WIDTH) + MapXTile;
+		gameMap.TileList[TileNumber].TileXID=3;
+		gameMap.TileList[TileNumber].TileYID=3;
+		gameMap.TileList[TileNumber].TypeID=TILE_TYPE_BLOCK;
 	}
-	if(CurrentPlayer==-1){
-		x_pos-=20;
-		y_pos-=20;
-	}
-*/
 }
 
 //==============================================================================
@@ -28,46 +40,27 @@ void MapEditor::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 	
 	switch(sym) {
 		case SDLK_LEFT: {
-			/*//x_pos-=move_size;
-			goLeft=1;
-			isMoving = true;
-			//Mix_PauseMusic();
-			Mix_PlayChannel( -1, sfx1, 0 );*/
 			Camera::CameraControl.OnMove(5,0);
 			break;
 		}
 
 		case SDLK_RIGHT: {
-			/*//x_pos+=move_size;
-			goRight=1;
-			isMoving = true;
-			//Mix_ResumeMusic();			
-			Mix_PlayChannel( -1, sfx2, 0 );*/
-			Camera::CameraControl.OnMove(-5,0);		
+			Camera::CameraControl.OnMove(-5,0);	
 			break;
 		}
 
 		case SDLK_UP: {
-			/*//y_pos-=move_size;
-			goUp=1;
-			isMoving = true;
-			Mix_PlayChannel( -1, sfx3, 0 );*/
 			Camera::CameraControl.OnMove(0,5);
 			break;
 		}
 
 		case SDLK_DOWN: {
-			/*//y_pos+=move_size;
-			goDown=1;			
-			isMoving = true;
-			Mix_PlayChannel( -1, sfx4, 0 );*/
 			Camera::CameraControl.OnMove(0,-5);
 			break;
 		}
 
-    case SDLK_ESCAPE: {
-   		std::cout << Camera::CameraControl.GetX() << "," << Camera::CameraControl.GetY() << std::endl;   
-		//OnExit();
+    case SDLK_ESCAPE: {  
+		OnExit();
    		break;
     }
 
@@ -80,31 +73,18 @@ void MapEditor::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 void MapEditor::OnKeyUp(SDLKey sym, SDLMod mod, Uint16 unicode) {
 	switch(sym) {
 		case SDLK_LEFT: {
-			goLeft=0;
-			isMoving = false;
-			Anim_Char.SetCurrentFrame(0);
 			break;
 		}
 
 		case SDLK_RIGHT: {
-			goRight=0;
-			isMoving = false;
-			Anim_Char.SetCurrentFrame(0);
 			break;
 		}
 
 		case SDLK_UP: {
-			goUp=0;
-			isMoving = false;
-			Anim_Char.SetCurrentFrame(0);
 			break;
 		}
 
 		case SDLK_DOWN: {
-			goDown=0;
-			isMoving = false;
-			Anim_Char.SetCurrentFrame(0);
-			break;
 		}
 
 		default: {

@@ -1,4 +1,6 @@
 #include "Map.h"
+#include <iostream>
+using namespace std;
 
 Map::Map() {
 	Surf_Tileset = NULL;
@@ -20,16 +22,10 @@ bool Map::OnLoad(char* File) {
 			// Reads in pre-created map
 			//fscanf(FileHandle, "%d:%d:%d ", &tempTile.TileXID, &tempTile.TileYID, &tempTile.TypeID);
 			
-			// Creates generic "all-grass" map lined by black
-			if(Y==0 || Y==MAP_HEIGHT-1 || X==0 || X==MAP_WIDTH-1){
-				tempTile.TileXID=0;
-				tempTile.TileYID=0;
-				tempTile.TypeID=TILE_TYPE_BLOCK;
-			}else{
-				tempTile.TileXID=0;
-				tempTile.TileYID=1;
-				tempTile.TypeID=TILE_TYPE_NORMAL;
-			}
+			// Creates generic "all-grass" map
+			tempTile.TileXID=0;
+			tempTile.TileYID=1;
+			tempTile.TypeID=TILE_TYPE_NORMAL;
 
 			TileList.push_back(tempTile);
 		}
@@ -42,7 +38,10 @@ bool Map::OnLoad(char* File) {
 }
 
 void Map::OnRender(SDL_Surface* Surf_Display, int MapX, int MapY) {
-	if(Surf_Tileset == NULL) return;
+	if(Surf_Tileset == NULL){
+		cout << "here" << endl;
+		return;
+	}
 
 	int TilesetWidth = Surf_Tileset-> w / TILE_SIZE;
 	int TilesetHeight = Surf_Tileset-> h / TILE_SIZE;

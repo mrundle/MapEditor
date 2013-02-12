@@ -5,7 +5,9 @@
 #define MAP_HEIGHT 40
 #define TILE_SIZE 32
 
-#define WWIDTH 640
-#define WHEIGHT 480
+#define WWIDTH 800
+#define WHEIGHT 600
+
+#define CBAR_WIDTH 100
 
 #endif

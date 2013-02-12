@@ -3,7 +3,8 @@
 Camera Camera::CameraControl;
  
 Camera::Camera() {
-    X = Y = 0;
+    X = -(WWIDTH/2);
+	Y = -(WHEIGHT/2);
  
     TargetX = TargetY = NULL;
  
@@ -47,4 +48,20 @@ void Camera::SetPos(int X, int Y) {
 void Camera::SetTarget(int* X, int* Y) {
     TargetX = X;
     TargetY = Y;
+}
+
+// Check to make sure that the camera didn't move out of bounds - if so, fix
+void Camera::CheckBounds(){
+	if(Camera::CameraControl.GetX() > 0){
+		Camera::CameraControl.SetPos(0,Camera::CameraControl.GetY());
+	}
+	if(Camera::CameraControl.GetX() < ((MAP_WIDTH*TILE_SIZE*-1)+WWIDTH-CBAR_WIDTH)){
+		Camera::CameraControl.SetPos((MAP_WIDTH*TILE_SIZE*-1)+WWIDTH-CBAR_WIDTH,Camera::CameraControl.GetY());
+	}	
+	if(Camera::CameraControl.GetY() > 0){
+		Camera::CameraControl.SetPos(Camera::CameraControl.GetX(), 0);
+	}
+	if(Camera::CameraControl.GetY() < ((MAP_HEIGHT*TILE_SIZE*-1)+WHEIGHT)){
+		Camera::CameraControl.SetPos(Camera::CameraControl.GetX(),(MAP_HEIGHT*TILE_SIZE*-1)+WHEIGHT);
+	}
 }

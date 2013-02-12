@@ -38,6 +38,8 @@ class Camera {
         void SetPos(int X, int Y);
  
         void SetTarget(int* X, int* Y);
+
+		void CheckBounds();
 };
  
 #endif

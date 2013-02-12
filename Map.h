@@ -13,7 +13,8 @@ class Map {
 
 		SDL_Surface* Surf_Tileset;
 
-	private:
+	// WAS PRIVATE
+	public:
 
 		std::vector<Tile> TileList;
 

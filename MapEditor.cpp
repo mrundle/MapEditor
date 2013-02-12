@@ -2,22 +2,11 @@
 
 MapEditor::MapEditor() {
 	// Initialize the surfaces to NULL to avoid errors
-	Surf_Char = NULL;
-	Surf_BG = NULL;
 	Surf_Display = NULL;
+	Control_Display = NULL;
+	Control_Bar_One = NULL;
+	Control_Bar_Two = NULL;
 
-	// Initializes the initial position of the character
-	x_pos=0;
-	y_pos=0;
-	goUp = goDown = goRight = goLeft = 0;
-	charDirX = charDirY = 0;
-	isMoving = false;
-	CurrentPlayer=1;
-
-	// Initialize the maxFrames for teh animation
-	Anim_Char.MaxFrames=3;
-		// If animation should oscillate, set Anim_Char.Oscillate = true;
-	
 	Running = true;
 }
  
