@@ -8,6 +8,7 @@
 #define WWIDTH 800
 #define WHEIGHT 600
 
-#define CBAR_WIDTH 100
+#define CBAR_WIDTH 320
+#define CBAR_HEIGHT 40
 
 #endif
