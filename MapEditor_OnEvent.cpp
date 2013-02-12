@@ -61,25 +61,45 @@ void MapEditor::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 					currentTileYID--;
 				}
 			}
+			if((currentTileXID==0) && (currentTileYID==0)){
+				currentTileXID=8;
+				currentTileYID=18;
+			}
 			break;
 		}
 
 		case SDLK_RIGHT: {
-			if(!((currentTileXID==8) && (currentTileYID==17))){
+			if(!((currentTileXID==8) && (currentTileYID==18))){
 				currentTileXID++;
 				if(currentTileXID > 8){
 					currentTileXID=0;
 					currentTileYID++;
 				}
 			}
+			if((currentTileXID==8) && (currentTileYID==18)){
+				currentTileXID=0;
+				currentTileYID=0;
+			}
 			break;
 		}
 
 		case SDLK_UP: {
+			if(currentTileYID > 0){
+				currentTileYID--;
+			}
+			if(currentTileYID <= 0){
+				currentTileYID=18;
+			}
 			break;
 		}
 
 		case SDLK_DOWN: {
+			if(currentTileYID < 18){
+				currentTileYID++;
+			}
+			if(currentTileYID >= 18){
+				currentTileYID=0;
+			}
 			break;
 		}
 
