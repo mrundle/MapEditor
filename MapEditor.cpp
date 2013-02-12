@@ -4,11 +4,11 @@ MapEditor::MapEditor() {
 	// Initialize the surfaces to NULL to avoid errors
 	Surf_Display = NULL;
 	Control_Display = NULL;
-	Control_Bar_One = NULL;
-	Control_Bar_Two = NULL;
+	Tileset = NULL;
+	Selector =  NULL;
 
-	currentTileXID=3;
-	currentTileYID=6;
+	currentTileXID=0;
+	currentTileYID=0;
 
 	Running = true;
 }

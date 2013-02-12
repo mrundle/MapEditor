@@ -55,8 +55,8 @@ void Camera::CheckBounds(){
 	if(Camera::CameraControl.GetX() > 0){
 		Camera::CameraControl.SetPos(0,Camera::CameraControl.GetY());
 	}
-	if(Camera::CameraControl.GetX() < ((MAP_WIDTH*TILE_SIZE*-1)+WWIDTH-CBAR_WIDTH)){
-		Camera::CameraControl.SetPos((MAP_WIDTH*TILE_SIZE*-1)+WWIDTH-CBAR_WIDTH,Camera::CameraControl.GetY());
+	if(Camera::CameraControl.GetX() < ((MAP_WIDTH*TILE_SIZE*-1)+WWIDTH)){
+		Camera::CameraControl.SetPos((MAP_WIDTH*TILE_SIZE*-1)+WWIDTH,Camera::CameraControl.GetY());
 	}	
 	if(Camera::CameraControl.GetY() > 0){
 		Camera::CameraControl.SetPos(Camera::CameraControl.GetX(), 0);

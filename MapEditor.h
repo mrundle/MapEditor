@@ -18,8 +18,8 @@ class MapEditor : public Event {
 	// SDL surfaces
 	SDL_Surface* Surf_Display;
 	SDL_Surface* Control_Display;
-	SDL_Surface* Control_Bar_One;
-	SDL_Surface* Control_Bar_Two;
+	SDL_Surface* Tileset;
+	SDL_Surface* Selector;
 
 	// game map
 	Map gameMap;

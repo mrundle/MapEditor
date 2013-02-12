@@ -21,18 +21,19 @@ bool MapEditor::OnInit() {
 		return false;
 	}
 
-	if((Control_Bar_One = Surface::OnLoad("./tilesets/controlBarOne.png")) == NULL){
+	if((Tileset = Surface::OnLoad("./tilesets/grounds32.gif")) == NULL){
 		return false;
 	}
-	if((Control_Bar_Two = Surface::OnLoad("./tilesets/controlBarTwo.png")) == NULL){
+	if((Selector = Surface::OnLoad("./graphics/selector.png")) == NULL){
 		return false;
 	}
 
 	// Name the window
 	SDL_WM_SetCaption("MapEditor",NULL);
 
-	// Makes the pink background of the "X" and "Y" images transparent
-	//Surface::Transparent(Surf_Char,255,0,255);
+	// Makes the pink background transparent
+	Surface::Transparent(Selector,255,0,255);
+	Surface::Transparent(Control_Display,255,0,255);
 
 //==========================================================================
 // Load map tileset
@@ -48,7 +49,8 @@ if((gameMap.Surf_Tileset = Surface::OnLoad("./tilesets/grounds32.gif")) == NULL)
 //==============================================================================
 // Set keyboard repeat count
 
-SDL_EnableKeyRepeat(1, SDL_DEFAULT_REPEAT_INTERVAL / 3);
+// Disabled key repeat because it was messing up selection of tiles
+// SDL_EnableKeyRepeat(1, SDL_DEFAULT_REPEAT_INTERVAL / 3);
 
 //===============================================================================
 // if everything loaded without errors

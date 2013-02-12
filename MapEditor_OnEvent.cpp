@@ -11,7 +11,7 @@ void MapEditor::OnEvent(SDL_Event* Event) {
 void MapEditor::OnLButtonDown(int MouseXPos, int MouseYPos) {
 	// On left mouse button click
 
-	if(MouseXPos < (WWIDTH - CBAR_WIDTH)){
+	if(1 /* MouseXPos < (WWIDTH - CBAR_WIDTH) */){
 		int CameraXPos = Camera::CameraControl.GetX();
 		int CameraYPos = Camera::CameraControl.GetY();
 
@@ -52,22 +52,57 @@ void MapEditor::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 	int move_size=10;	
 	
 	switch(sym) {
+
 		case SDLK_LEFT: {
-			Camera::CameraControl.OnMove(5,0);
+			if(!((currentTileXID==0) && (currentTileYID==0))){
+				currentTileXID--;
+				if(currentTileXID < 0){
+					currentTileXID=8;
+					currentTileYID--;
+				}
+			}
 			break;
 		}
 
 		case SDLK_RIGHT: {
-			Camera::CameraControl.OnMove(-5,0);	
+			if(!((currentTileXID==8) && (currentTileYID==17))){
+				currentTileXID++;
+				if(currentTileXID > 8){
+					currentTileXID=0;
+					currentTileYID++;
+				}
+			}
 			break;
 		}
 
 		case SDLK_UP: {
-			Camera::CameraControl.OnMove(0,5);
 			break;
 		}
 
 		case SDLK_DOWN: {
+			break;
+		}
+
+		// Left
+		case SDLK_a: {
+			Camera::CameraControl.OnMove(5,0);
+			break;
+		}
+
+		// Right
+		case SDLK_d: {
+			Camera::CameraControl.OnMove(-5,0);	
+			break;
+		}
+
+		// Up
+		case SDLK_w: {
+			Camera::CameraControl.OnMove(0,5);
+			break;
+		}
+
+		// Down
+		case SDLK_s: {
 			Camera::CameraControl.OnMove(0,-5);
 			break;
 		}
