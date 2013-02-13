@@ -7,9 +7,23 @@
               | |                                
               |_|                                
 
-by Matthew Rundle
+		by Matthew Rundle
 
-2D tile-based map editor using C++ with the SDL libraries.
+------------------------------------------------------------
+
+A 2D tile-based map editor using C++ with the SDL libraries.
+
+------------------------------------------------------------
+
+Controls:
+
+	-WASD to control camera and navigate around map
+
+	-Left/Right/Up/Down to select desired tile from the set
+
+	-Mouse left click will place selected tile on cursor
+
+------------------------------------------------------------
 
 TODO: Add read/write functionality of maps. Print vector of tiles 
 to a text file that can be read in later.
