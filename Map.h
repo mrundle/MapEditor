@@ -24,9 +24,10 @@ class Map {
 
 	public:
 
-		bool OnLoad(char* File);
+		bool OnLoad(char* File,bool,char*,int,int);
 
 		void OnRender(SDL_Surface* Surf_Display, int MapX, int MapY);
+
 };
 
 #endif

@@ -1,6 +1,7 @@
 #include "MapEditor.h"
- 
+
 void MapEditor::OnCleanup() {
+
 	// Free the surfaces
 	SDL_FreeSurface(Surf_Display);
 	SDL_FreeSurface(Control_Display);

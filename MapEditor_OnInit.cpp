@@ -38,7 +38,7 @@ bool MapEditor::OnInit() {
 //==========================================================================
 // Load map tileset
 
-if(gameMap.OnLoad("./maps/1.map") == false) {
+if(gameMap.OnLoad("/maps/1.map",Load,filenameLoad,currentTileXID,currentTileYID) == false) {
 	return false;
 }
 

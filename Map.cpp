@@ -1,45 +1,64 @@
 #include "Map.h"
-#include <iostream>
-using namespace std;
+#include "MapEditor.h"
 
 Map::Map() {
 	Surf_Tileset = NULL;
 }
 
-bool Map::OnLoad(char* File) {
+bool Map::OnLoad(char* File, bool Load,char* filenameLoad, int currentTileXID, int currentTileYID) {
 	TileList.clear();
 
-	FILE* FileHandle = fopen(File, "r");
-
-	if(FileHandle == NULL) {
-		return false;
-	}
-
-	for(int Y=0;Y<MAP_HEIGHT;Y++) {
-		for(int X=0;X<MAP_WIDTH;X++) {
-			Tile tempTile;
+	if(Load == false){
+		// generate a fresh map
+		for(int Y=0;Y<MAP_HEIGHT;Y++) {
+			for(int X=0;X<MAP_WIDTH;X++) {
+				
+				Tile tempTile;
 			
-			// Reads in pre-created map
-			//fscanf(FileHandle, "%d:%d:%d ", &tempTile.TileXID, &tempTile.TileYID, &tempTile.TypeID);
-			
-			// Creates generic "all-grass" map
-			tempTile.TileXID=0;
-			tempTile.TileYID=1;
-			tempTile.TypeID=TILE_TYPE_NORMAL;
+				// Creates generic map
+				tempTile.TileXID = currentTileXID;
+				tempTile.TileYID = currentTileYID;
+				tempTile.TypeID = TILE_TYPE_NORMAL;
 
-			TileList.push_back(tempTile);
+				TileList.push_back(tempTile);
+			}
 		}
-		//fscanf(FileHandle, "\n");
+	}
+	
+
+	if(Load == true){
+	// Load in a map from memory
+
+		FILE* FileHandle = fopen(filenameLoad, "r");
+
+		if(FileHandle == NULL) {
+			cout << "fail";
+			return false;
+		}
+
+		for(int Y=0;Y<MAP_HEIGHT;Y++) {
+			for(int X=0;X<MAP_WIDTH;X++) {
+				Tile tempTile;
+
+				fscanf(FileHandle, "%d:%d ", &tempTile.TileXID, &tempTile.TileYID);
+
+				TileList.push_back(tempTile);
+			}
+			fscanf(FileHandle, "\n");
+		}
+
+		fclose(FileHandle);
+
 	}
 
-	fclose(FileHandle);
+		myfile.close();
 
 	return true;
+
 }
 
 void Map::OnRender(SDL_Surface* Surf_Display, int MapX, int MapY) {
 	if(Surf_Tileset == NULL){
-		cout << "here" << endl;
 		return;
 	}
 
@@ -58,8 +77,6 @@ void Map::OnRender(SDL_Surface* Surf_Display, int MapX, int MapY) {
 			int tX = MapX + (X * TILE_SIZE);
 			int tY = MapY + (Y * TILE_SIZE);
 
-			//int TilesetX = (TileList[ID].TileID % TilesetWidth) * TILE_SIZE;
-			//int TilesetY = (TileList[ID].TileID / TilesetWidth) * TILE_SIZE;
 			int TilesetX = (TileList[ID].TileXID) * TILE_SIZE;
 			int TilesetY = (TileList[ID].TileYID) * TILE_SIZE;
 
@@ -69,3 +86,5 @@ void Map::OnRender(SDL_Surface* Surf_Display, int MapX, int MapY) {
 		}
 	}
 }
+
+

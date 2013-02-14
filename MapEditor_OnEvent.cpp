@@ -1,6 +1,4 @@
 #include "MapEditor.h"
-#include <iostream>
-using namespace std;
  
 //==============================================================================
 void MapEditor::OnEvent(SDL_Event* Event) {

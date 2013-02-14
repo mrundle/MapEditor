@@ -1,4 +1,6 @@
 #include "MapEditor.h"
+#include <iostream>
+using namespace std;
 
 MapEditor::MapEditor() {
 	// Initialize the surfaces to NULL to avoid errors
@@ -8,12 +10,42 @@ MapEditor::MapEditor() {
 	Selector =  NULL;
 
 	currentTileXID=0;
-	currentTileYID=0;
+	currentTileYID=1;
 
+	Load = false;
 	Running = true;
 }
- 
+
+void MapEditor::UserInput(){
+	char input;
+
+	cout << "Would you like to load a file? [y/n] ";
+	cin >> input;
+	if(input=='y' || input == 'Y'){
+		Load = true;
+	}
+	if(input=='n' || input == 'N'){
+
+	}
+
+	if(Load == true){
+		cout << "Which file would you like to load?";
+		cin >> filenameLoad;
+	}else{
+		cout << "Tile XID: ";
+		cin >> currentTileXID;
+		cout << "Tile YID: ";
+		cin >> currentTileYID;
+	}
+
+	cout << "What filename would you like to save this under? ";
+	cin >> filenameSave;
+
+}
+
 int MapEditor::OnExecute() {
+	UserInput();
+
 	// Initialize the game; if it fails, return error code and close program
 	if(OnInit() == false){
 		return -1;
@@ -33,15 +65,16 @@ int MapEditor::OnExecute() {
 		OnRender();
 	}
 
-	
+	OnSave();
 
+	// Clean up trash
 	OnCleanup();
 
 	return 0;
 }
- 
+
 int main(int argc, char* argv[]) {
-    MapEditor theApp;
- 
+
+    MapEditor theApp; 
     return theApp.OnExecute();
 }

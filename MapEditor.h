@@ -3,13 +3,19 @@
  
 #include "SDL/SDL.h"
 #include "SDL/SDL_mixer.h"
+
 #include <stdlib.h>
+
+#include <iostream>
+#include <fstream>
+
 #include "Define.h"
 #include "Event.h"
 #include "Surface.h"
 #include "Map.h"
 #include "Camera.h"
-#include <iostream>
+
+using namespace std;
  
 class MapEditor : public Event {
     private:
@@ -24,16 +30,25 @@ class MapEditor : public Event {
 	// game map
 	Map gameMap;
 
+	public: 
+	// filename
+	char filenameSave[32];
+	char filenameLoad[32];
+	bool Load;
+
+	public: // need to make get/set functions for these
+
 	// current tile choice
 	int currentTileXID;
 	int currentTileYID;
-
-    private:
+	static MapEditor MapEditorControl;
 
     public:
         MapEditor();
- 
+
         int OnExecute();
+
+		void UserInput();
 
     public:
 
@@ -53,8 +68,11 @@ class MapEditor : public Event {
         void OnLoop();
  
         void OnRender();
- 
+
+		void OnSave();
+
         void OnCleanup();
+
 };
  
 #endif
