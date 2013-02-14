@@ -9,6 +9,8 @@
 #include <iostream>
 #include <fstream>
 
+#include <vector>
+
 #include "Define.h"
 #include "Event.h"
 #include "Surface.h"

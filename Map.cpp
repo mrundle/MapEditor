@@ -14,11 +14,9 @@ bool Map::OnLoad(char* File, bool Load,char* filenameLoad, int currentTileXID, i
 			for(int X=0;X<MAP_WIDTH;X++) {
 				
 				Tile tempTile;
-			
-				// Creates generic map
+
 				tempTile.TileXID = currentTileXID;
 				tempTile.TileYID = currentTileYID;
-				tempTile.TypeID = TILE_TYPE_NORMAL;
 
 				TileList.push_back(tempTile);
 			}
@@ -32,7 +30,6 @@ bool Map::OnLoad(char* File, bool Load,char* filenameLoad, int currentTileXID, i
 		FILE* FileHandle = fopen(filenameLoad, "r");
 
 		if(FileHandle == NULL) {
-			cout << "fail";
 			return false;
 		}
 
@@ -44,17 +41,14 @@ bool Map::OnLoad(char* File, bool Load,char* filenameLoad, int currentTileXID, i
 
 				TileList.push_back(tempTile);
 			}
-			fscanf(FileHandle, "\n");
+			fscanf(FileHandle, " \n");
 		}
 
 		fclose(FileHandle);
 
 	}
 
-		myfile.close();
-
 	return true;
-
 }
 
 void Map::OnRender(SDL_Surface* Surf_Display, int MapX, int MapY) {
@@ -69,10 +63,6 @@ void Map::OnRender(SDL_Surface* Surf_Display, int MapX, int MapY) {
 
 	for(int Y=0;Y<MAP_HEIGHT;Y++) {
 		for(int X=0;X<MAP_WIDTH;X++) {
-			if(TileList[ID].TypeID == TILE_TYPE_NONE) {
-				ID++;
-				continue;
-			}
 
 			int tX = MapX + (X * TILE_SIZE);
 			int tY = MapY + (Y * TILE_SIZE);
