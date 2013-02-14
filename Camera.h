@@ -23,6 +23,10 @@ class Camera {
  
     public:
         int TargetMode;
+		bool MovingRight;
+		bool MovingLeft;
+		bool MovingUp;
+		bool MovingDown;
  
     public:
         Camera();

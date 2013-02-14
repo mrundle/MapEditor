@@ -103,25 +103,25 @@ void MapEditor::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 
 		// Left
 		case SDLK_a: {
-			Camera::CameraControl.OnMove(5,0);
+			Camera::CameraControl.MovingLeft = true;
 			break;
 		}
 
 		// Right
 		case SDLK_d: {
-			Camera::CameraControl.OnMove(-5,0);	
+			Camera::CameraControl.MovingRight = true;	
 			break;
 		}
 
 		// Up
 		case SDLK_w: {
-			Camera::CameraControl.OnMove(0,5);
+			Camera::CameraControl.MovingUp = true;
 			break;
 		}
 
 		// Down
 		case SDLK_s: {
-			Camera::CameraControl.OnMove(0,-5);
+			Camera::CameraControl.MovingDown = true;
 			break;
 		}
 
@@ -138,19 +138,24 @@ void MapEditor::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 //------------------------------------------------------------------------------
 void MapEditor::OnKeyUp(SDLKey sym, SDLMod mod, Uint16 unicode) {
 	switch(sym) {
-		case SDLK_LEFT: {
+		case SDLK_a: {
+			Camera::CameraControl.MovingLeft = false;
 			break;
 		}
 
-		case SDLK_RIGHT: {
+		case SDLK_d: {
+			Camera::CameraControl.MovingRight = false;
 			break;
 		}
 
-		case SDLK_UP: {
+		case SDLK_w: {
+			Camera::CameraControl.MovingUp = false;
 			break;
 		}
 
-		case SDLK_DOWN: {
+		case SDLK_s: {
+			Camera::CameraControl.MovingDown = false;
+			break;
 		}
 
 		default: {
