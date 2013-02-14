@@ -13,6 +13,10 @@
 
 A 2D tile-based map editor using C++ with the SDL libraries.
 
+Created for use in the semester project for the Spring 2013
+semester CSE20212 class (Fundamentals of Computing II) at
+the University of Notre Dame.
+
 ------------------------------------------------------------
 
 Credits:
@@ -38,7 +42,7 @@ Installation:
      containing folder "./tilesets/" relative to the 
      executable file
 
-	-The "controlBar.png" and "selector.png" graphics must
+    -The "controlBar.png" and "selector.png" graphics must
      be located in containig folder "./graphics" relative
      to the location of the executable file
 
@@ -47,6 +51,33 @@ Installation:
 Instructions:
 
     -Run MapEditor
+
+    -If you do not want to load a map from file, MapEditor
+     will generate a blank map for you. To do this, enter
+     the X and Y coordinate (when prompted) of the tile that
+     you want to fill the map.
+
+        -Reference to the tiling coordinate schema can be
+         found in /tilets/tileSchema.png
+
+    -If you decide to load a map that you have saved,
+     provide the relative path to that file
+
+		-ie "./maps/narnia.map" (without quotes)
+
+    -Regardless of whether you're generating a new map or
+     loading an old one, MapEditor saves your map each time
+     you close the program. When it asks for the file to 
+     save to, provide a relative path
+
+        -ie "./maps/narnia2.map" (without quotes)
+
+        -If the file does not exist, one will be created there
+
+        -You can save to the same file that you load from, just
+         enter the same filepath for both options
+
+        -Maps can have have any file name (.map, .foobar, etc)
 
 ------------------------------------------------------------
 
