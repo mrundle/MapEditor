@@ -28,10 +28,10 @@ Credits:
 
      http://pousse.rapiere.free.fr/tome/tome-tiles.htm
 
-	-Also, special thanks goes to Tim Jones of
-	 http://www.sdltutorials.com for helping me make my
-	 foray into SDL and helping me to devlop this map
-	 editor tool
+    -Also, special thanks goes to Tim Jones of
+     http://www.sdltutorials.com for helping me make my
+     foray into SDL and helping me to devlop this map
+     editor tool
 
 ------------------------------------------------------------
 
