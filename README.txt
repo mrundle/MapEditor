@@ -57,8 +57,9 @@ Instructions:
      the X and Y coordinate (when prompted) of the tile that
      you want to fill the map.
 
-        -Reference to the tiling coordinate schema can be
-         found in /tilets/tileSchema.png
+        -To view the tileset, see ./maps/grounds32.gif
+
+	-The X,Y schema starts with 0,0 in the top left
 
     -If you decide to load a map that you have saved,
      provide the relative path to that file
