@@ -1,3 +1,18 @@
+[NOTE]: 
+
+This has been merged into a final project
+with a group of classmates at Notre Dame. Notable additions
+(so far) include a "random map generator" algorithm and 
+ability to create an infinitely scrolling world composed of
+many unique and random "maps" - these were designed and
+implemented by teammate Benjamin Laws (gihub.com/blaws).
+The current plan is to transition this into a scrolling
+top-down RPG game. The project can be found at: 
+
+https://github.com/TeamIrish/CSE-20212-Final-Project  
+
+------------------------------------------------------------
+
   __  __             ______    _ _ _             
  |  \/  |           |  ____|  | (_) |            
  | \  / | __ _ _ __ | |__   __| |_| |_ ___  _ __ 
@@ -29,8 +44,8 @@ Credits:
      http://pousse.rapiere.free.fr/tome/tome-tiles.htm
 
     -Also, special thanks goes to Tim Jones of
-     http://www.sdltutorials.com for helping me make my
-     foray into SDL and helping me to devlop this map
+     http://www.sdltutorials.com for helping my
+     foray into SDL and helping me to develop this map
      editor tool
 
 ------------------------------------------------------------
@@ -94,10 +109,3 @@ Controls:
     -Left/Right/Up/Down to select desired tile from the set
 
     -Mouse left click will place selected tile on cursor
-
-------------------------------------------------------------
-
-TODO: Add read/write functionality of maps. Print vector of 
-tiles to a text file that can be read in later.
-
-
